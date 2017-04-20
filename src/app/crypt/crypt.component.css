@@ -1,0 +1,118 @@
+.collapsible-body{
+    padding-bottom: 0px;
+}
+img.active {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+.first:before {
+	  content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    //z-index: -1;
+    background-position: center;
+    background-repeat: no-repeat;
+    //overflow: hidden !important;
+    //filter: blur(5px);
+    //width: 101%;
+    //height: 101%;
+  	background-image: url(../../assets/img/Glasgow.png);
+  	background-attachment: fixed;
+  	//padding: 300px 0;
+}
+.btn.btn-outlined {
+  color: white;
+  height: 40px;
+  //line-height: 38px;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 15px;
+  //padding: 0 35px;
+  width: 20px;
+  //text-align: center;
+}
+.btn.btn-outlined:hover {
+  background: #ffffff;
+  color: yellow;
+  border: 1px solid orange;
+}
+button.btn.btn-outlined:after{
+    content: ' \25CF';
+    font-size: 40px;
+    color: grey;
+}
+.btn.btn-outlined.active:after{
+    content: ' \25CF';
+    font-size: 40px;
+    color: yellow;
+}
+.btn.btn-floating{
+    margin-right: 20px;
+}
+.circle {
+    border-radius: 50% !important;
+}
+.key { 
+    display:inline-block; 
+    border:1px solid red; 
+    padding:10px;
+    margin-bottom:5px; 
+}
+
+input.btn {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/* label color */
+.input-field label {
+    color: orange;
+    text-align: center;
+}
+   /* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #000;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=text].valid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #000;
+}
+.input-field {
+    border: 1px solid rgba(255,255,255,0.5);
+    border-top: 0px;
+    padding: 20px;
+    color: white !important;
+}
+textarea {
+    color: white !important;
+}
+.input-field {
+    text-align: center;
+}
