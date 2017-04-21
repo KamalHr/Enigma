@@ -1,119 +1,125 @@
 <div class="fixed-action-btn">
-    <a class="btn-floating btn-large grey darken-4 btn-flat">
-      <i class="large material-icons">mode_edit</i>
-    </a>
-    <ul>
-      	<li><a class="btn-floating btn-flat"><i class="material-icons">insert_chart</i></a></li>
-      	<li><a class="btn-floating btn-flat" (click)='Reset()'><i class="material-icons">refresh</i></a></li>
-    </ul>
+	<button (click)="edit()" data-target="modal1" class="btn-floating btn-large grey darken-4 btn-flat">
+		<i class="large material-icons">mode_edit</i>
+	</button>
+	<ul>
+		<li><a class="btn-floating btn-flat" (click)='Reset()'><i class="material-icons">refresh</i></a></li>
+	</ul>
 </div>
 <div class="first">
 	<header>
 		<nav>
-		    <div class="nav-wrapper">
-		      	<a href="#" class="brand-logo center" style="padding-top: 5px;">
-		      		<img src="../../assets/img/logo.png" class="responsive-img">
-		      	</a>
-		    </div>
-	  	</nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo center" style="padding-top: 5px;">
+					<img src="../../assets/img/logo.png" class="responsive-img">
+				</a>
+			</div>
+		</nav>
 	</header>
 	<main>
 		<div class="row">
-	        <div class="col s12 m8 offset-m2">
-	            <div class="card transparent white-text z-depth-0 center-align">
-	                <div class="card-content">
-	                    <br/>
-	                    <div class="row center-align">
-	                        <ul class="collapsible transparent z-depth-0" data-collapsible="accordion" style="border-color: rgba(255,255,255,0.2) !important;">
-	                            <li>
-	                                <div class="collapsible-header transparent" style="border-color: rgba(255,255,255,0.2) !important;">
-	                                	<strong>Encrypt</strong>
-	                                	<span class="switch right">
+			<div class="col s12 m8 offset-m2">
+				<div class="card transparent black-text z-depth-0 center-align">
+					<div class="card-content">
+						<br/>
+						<div class="row center-align">
+							<ul class="collapsible z-depth-1" data-collapsible="accordion" style="border-color: rgba(255,255,255,0.2) !important;">
+								<li>
+									<div class="collapsible-header transparent" style="border-color: rgba(255,255,255,0.2) !important;">
+										<strong>Encrypt</strong>
+										<span class="switch right black-text">
 										    <label>
 										      	Encrypt
 										      	<input [(ngModel)]="isDecrypt" type="checkbox">
-										      	<span class="lever"></span>
-										      	Decrypt
-										    </label>
-								  		</span>
-	                                </div>
-	                                <div class="collapsible-body" style="border-color: rgba(255,255,255,0.2) !important;">
-	                                    <div class="row">
-	                                        <div class="keyboard">
-	                                        	<div class="row">
-	                                        		<input id="rotor1" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
-	                                        		<input id="rotor2" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
-	                                        		<input id="rotor3" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
-	                                        	</div>
-	                                        	<div class="row">
-                                        		 	<button id="Q" (click)="Clicked('Q')" class="btn btn-outlined transparent">Q</button>
-												    <button id="W" (click)="Clicked('W')"  class="btn btn-outlined transparent">W</button>
-												    <button id="E" (click)="Clicked('E')"  class="btn btn-outlined transparent">E</button>
-												    <button id="R" (click)="Clicked('R')"  class="btn btn-outlined transparent">R</button>
-												    <button id="T" (click)="Clicked('T')"  class="btn btn-outlined transparent">T</button>
-												    <button id="Y" (click)="Clicked('Y')"  class="btn btn-outlined transparent">Y</button>
-												    <button id="U" (click)="Clicked('U')"  class="btn btn-outlined transparent">U</button>
-												    <button id="I" (click)="Clicked('I')"  class="btn btn-outlined transparent">I</button>
-												    <button id="O" (click)="Clicked('O')"  class="btn btn-outlined transparent">O</button>
-												    <button id="P" (click)="Clicked('P')"  class="btn btn-outlined transparent">P</button>
-	                                        	</div>
-	                                        	<br/>
-	                                        	<div class="row">
-	                                        		<button id="A" (click)="Clicked('A')"  class="btn btn-outlined transparent">A</button>
-												    <button id="S" (click)="Clicked('S')"  class="btn btn-outlined transparent">S</button>
-												    <button id="D" (click)="Clicked('D')"  class="btn btn-outlined transparent">D</button>
-												    <button id="F" (click)="Clicked('F')"  class="btn btn-outlined transparent">F</button>
-												    <button id="G" (click)="Clicked('G')"  class="btn btn-outlined transparent">G</button>
-												    <button id="H" (click)="Clicked('H')"  class="btn btn-outlined transparent">H</button>
-												    <button id="J" (click)="Clicked('J')"  class="btn btn-outlined transparent">J</button>
-												    <button id="K" (click)="Clicked('K')"  class="btn btn-outlined transparent">K</button>
-												    <button id="L" (click)="Clicked('L')"  class="btn btn-outlined transparent">L</button>
-	                                        	</div>
-	                                        	<br />
-	                                        	<div class="row">
-	                                        		<button id="Z" (click)="Clicked('Z')"  class="btn btn-outlined transparent">Z</button>
-												    <button id=X (click)="Clicked('X')"  class="btn btn-outlined transparent">X</button>
-												    <button id="C" (click)="Clicked('C')"  class="btn btn-outlined transparent">C</button>
-												    <button id="V" (click)="Clicked('V')"  class="btn btn-outlined transparent">V</button>
-												    <button id="B" (click)="Clicked('B')"  class="btn btn-outlined transparent">B</button>
-												    <button id="N" (click)="Clicked('N')"  class="btn btn-outlined transparent">N</button>
-												    <button id="M" (click)="Clicked('M')"  class="btn btn-outlined transparent">M</button>
-	                                        	</div>
-	                                        	<br />
-	                                        	<div class="row">
-	                                        		<div class="valign-wrapper">
-	                                        		<div class="col m5">
-	                                        			<div class="input-field col s12 white-text">
-												          	<textarea id="textarea1" class="materialize-textarea" disabled="true"></textarea>
-												          	<label for="textarea1">Plain Text</label>
-												        </div>
-	                                        		</div>
-	                                        		<div class="col m2">
-	                                        			<img [ngClass]="{'active': isDecrypt}" src="../../assets/img/collapse21600.png" class="responsive-img">
-	                                        		</div>
-	                                        		<div class="col m5">
-	                                        			<div class="input-field col s12 white-text">
-												          	<textarea id="textarea2" class="materialize-textarea" disabled="true"></textarea>
-												          	<label for="textarea2">Encrypted</label>
-												        </div>
-	                                        		</div>
-	                                        		</div>
-	                                        	</div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                            </li>
-	                        </ul>
-	                    </div>
-	                    <div class="row">
-	                        <span class="text-flow">Want to decrypt?<a href="login">here.</a></span>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
+										      	<span class="lever"></span> Decrypt
+										</label>
+										</span>
+									</div>
+									<div class="collapsible-body black-text" style="border-color: rgba(255,255,255,0.2) !important;">
+										<div class="row">
+											<div class="keyboard black-text">
+												<div class="row">
+													<input id="rotor1" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
+													<input id="rotor2" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
+													<input id="rotor3" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
+												</div>
+												<div class="row">
+													<button id="Q" (click)="Clicked('Q')" class="btn btn-outlined transparent">Q</button>
+													<button id="W" (click)="Clicked('W')" class="btn btn-outlined transparent">W</button>
+													<button id="E" (click)="Clicked('E')" class="btn btn-outlined transparent">E</button>
+													<button id="R" (click)="Clicked('R')" class="btn btn-outlined transparent">R</button>
+													<button id="T" (click)="Clicked('T')" class="btn btn-outlined transparent">T</button>
+													<button id="Y" (click)="Clicked('Y')" class="btn btn-outlined transparent">Y</button>
+													<button id="U" (click)="Clicked('U')" class="btn btn-outlined transparent">U</button>
+													<button id="I" (click)="Clicked('I')" class="btn btn-outlined transparent">I</button>
+													<button id="O" (click)="Clicked('O')" class="btn btn-outlined transparent">O</button>
+													<button id="P" (click)="Clicked('P')" class="btn btn-outlined transparent">P</button>
+												</div>
+												<br/>
+												<div class="row">
+													<button id="A" (click)="Clicked('A')" class="btn btn-outlined transparent">A</button>
+													<button id="S" (click)="Clicked('S')" class="btn btn-outlined transparent">S</button>
+													<button id="D" (click)="Clicked('D')" class="btn btn-outlined transparent">D</button>
+													<button id="F" (click)="Clicked('F')" class="btn btn-outlined transparent">F</button>
+													<button id="G" (click)="Clicked('G')" class="btn btn-outlined transparent">G</button>
+													<button id="H" (click)="Clicked('H')" class="btn btn-outlined transparent">H</button>
+													<button id="J" (click)="Clicked('J')" class="btn btn-outlined transparent">J</button>
+													<button id="K" (click)="Clicked('K')" class="btn btn-outlined transparent">K</button>
+													<button id="L" (click)="Clicked('L')" class="btn btn-outlined transparent">L</button>
+												</div>
+												<br />
+												<div class="row">
+													<button id="Z" (click)="Clicked('Z')" class="btn btn-outlined transparent">Z</button>
+													<button id=X (click)="Clicked('X')" class="btn btn-outlined transparent">X</button>
+													<button id="C" (click)="Clicked('C')" class="btn btn-outlined transparent">C</button>
+													<button id="V" (click)="Clicked('V')" class="btn btn-outlined transparent">V</button>
+													<button id="B" (click)="Clicked('B')" class="btn btn-outlined transparent">B</button>
+													<button id="N" (click)="Clicked('N')" class="btn btn-outlined transparent">N</button>
+													<button id="M" (click)="Clicked('M')" class="btn btn-outlined transparent">M</button>
+												</div>
+												<br />
+												<div class="row">
+													<div class="valign-wrapper">
+														<div class="col m5">
+															<div class="input-field col s12 black-text">
+																<textarea id="textarea1" class="materialize-textarea"></textarea>
+																<label for="textarea1">Plain Text</label>
+															</div>
+														</div>
+														<div class="col m2">
+															<img [ngClass]="{'active': isDecrypt}" src="../../assets/img/collapse21600.png" class="responsive-img">
+														</div>
+														<div class="col m5">
+															<div class="input-field col s12 black-text">
+																<textarea id="textarea2" class="materialize-textarea"></textarea>
+																<label for="textarea2">Encrypted</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="row">
+							<span class="text-flow">Want to decrypt?<a href="login">here.</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 	<footer>
-		
+		<div id="modal1" class="modal black white-text z-depth-5" style="border: 1px solid white;">
+			<div class="modal-content">
+				<h4>Modal Header</h4>
+				<p>A bunch of text</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+			</div>
+		</div>
 	</footer>
 </div>

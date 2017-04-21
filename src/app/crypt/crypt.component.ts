@@ -1,48 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { EncryptService } from '../encrypt.service';
 declare var $: any
-
+declare var Materialize: any;
 @Component({
-  selector: 'app-crypt',
-  templateUrl: './crypt.component.html',
-  styleUrls: ['./crypt.component.css']
+	selector: 'app-crypt',
+	templateUrl: './crypt.component.html',
+	styleUrls: ['./crypt.component.css']
 })
 export class CryptComponent implements OnInit {
 	isDecrypt = false;
-  	constructor(private _encrypt: EncryptService) {
+	constructor(private _encrypt: EncryptService) {
 
-  	}
-
-  	ngOnInit() {
-  		$('.collapsible').collapsible('open', 1);
-  		$('#textarea1').val(' ');
-	  	$('#textarea1').trigger('autoresize');
-	  	$('#textarea2').val(' ');
-	  	$('#textarea2').trigger('autoresize');
-	  	this.Reset();
 	}
-	private nextChar = (c) => {
-		if(c.charAt(0) === 'Z')
-			return 'A';
-	    return String.fromCharCode(c.charCodeAt(0) + 1);
+	@HostListener('document:keydown', ['$event'])
+	public handleKeyboardEvent(event: KeyboardEvent): void {
+		console.log(event.key);
+		event.stopPropagation();
+		if(event.key.charCodeAt(0) > 96 && event.key.charCodeAt(0)< 123){
+				this.Clicked(event.key.toUpperCase());
+		}
+		//console.log(event.key);
+	}
+	ngOnInit() {
+		$('.collapsible').collapsible('open', 1);
+		$('#textarea1').val(' ');
+		$('#textarea1').trigger('autoresize');
+		$('#textarea2').val(' ');
+		$('#textarea2').trigger('autoresize');
+		$('#modal1').modal();
+		setTimeout(() => {
+			console.log('Hello world');
+		},4000);
+		console.log('fuck off');
 	}
 	Clicked = (lettre) => {
 		$('.btn').removeClass('active');
-		$('#textarea1').val($('#textarea1').val()+lettre);
-		this._encrypt.encrypt(lettre).subscribe(res => {
-			$('#'+res.json().lettre).addClass('active');
-			$('#rotor3').val(res.json().positions[0]);
-			$('#rotor2').val(res.json().positions[1]);
-			$('#rotor1').val(res.json().positions[2]);
-			$('#textarea2').val($('#textarea2').val()+res.json().lettre);
-			//console.log();
-		});
+		$('#textarea1').val($('#textarea1').val() + lettre);
+		var res = this._encrypt.encrypt(lettre);
+		$('#' + res.lettre).addClass('active');
+		$('#rotor3').val(res.positions[0]);
+		$('#rotor2').val(res.positions[1]);
+		$('#rotor1').val(res.positions[2]);
+		$('#textarea2').val($('#textarea2').val() + res.lettre);
 	};
 	Reset = () => {
-		this._encrypt.reset().subscribe(res => {
-			$('#rotor3').val(res.json().positions[0]);
-			$('#rotor2').val(res.json().positions[1]);
-			$('#rotor1').val(res.json().positions[2]);
-		});
+		var res = this._encrypt.reset();
+		$('#rotor3').val(res.positions[0]);
+		$('#rotor2').val(res.positions[1]);
+		$('#rotor1').val(res.positions[2]);
+		$('#textarea1').val('');
+		$('#textarea2').val('');
+	};
+	edit = () => {
+
 	}
 }
