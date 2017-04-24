@@ -9,6 +9,7 @@ declare var Materialize: any;
 })
 export class CryptComponent implements OnInit {
 	isDecrypt = false;
+	count: number = 0;
 	constructor(private _encrypt: EncryptService) {
 
 	}
@@ -16,8 +17,8 @@ export class CryptComponent implements OnInit {
 	public handleKeyboardEvent(event: KeyboardEvent): void {
 		console.log(event.key);
 		event.stopPropagation();
-		if(event.key.charCodeAt(0) > 96 && event.key.charCodeAt(0)< 123){
-				this.Clicked(event.key.toUpperCase());
+		if (event.key.charCodeAt(0) > 96 && event.key.charCodeAt(0) < 123) {
+			this.Clicked(event.key.toUpperCase());
 		}
 		//console.log(event.key);
 	}
@@ -28,20 +29,23 @@ export class CryptComponent implements OnInit {
 		$('#textarea2').val(' ');
 		$('#textarea2').trigger('autoresize');
 		$('#modal1').modal();
-		setTimeout(() => {
-			console.log('Hello world');
-		},4000);
-		console.log('fuck off');
+		$(document).ready(function () {
+			$('select').material_select();
+		});
 	}
 	Clicked = (lettre) => {
+		var esc = (this.count == 3) ? ' ' : '';
+		this.count = (this.count == 3) ? 0 : this.count + 1;
 		$('.btn').removeClass('active');
-		$('#textarea1').val($('#textarea1').val() + lettre);
+		$('#textarea1').val($('#textarea1').val() + lettre + esc);
+		$('#textarea1').trigger('autoresize');
 		var res = this._encrypt.encrypt(lettre);
 		$('#' + res.lettre).addClass('active');
 		$('#rotor3').val(res.positions[0]);
 		$('#rotor2').val(res.positions[1]);
 		$('#rotor1').val(res.positions[2]);
-		$('#textarea2').val($('#textarea2').val() + res.lettre);
+		$('#textarea2').val($('#textarea2').val() + res.lettre + esc);
+		$('#textarea2').trigger('autoresize');
 	};
 	Reset = () => {
 		var res = this._encrypt.reset();
@@ -51,7 +55,7 @@ export class CryptComponent implements OnInit {
 		$('#textarea1').val('');
 		$('#textarea2').val('');
 	};
-	edit = () => {
-
+	updateMachine = () => {
+		console.log("Hello");
 	}
 }

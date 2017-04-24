@@ -10,27 +10,27 @@ img.active {
     -ms-filter: "FlipH";
 }
 .first:before {
-	  content: '';
+	content: '';
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
-    //z-index: -1;
+    /*//z-index: -1;*/
     background-position: center;
     background-repeat: no-repeat;
-    //overflow: hidden !important;
+    /*//overflow: hidden !important;
     //filter: blur(5px);
     //width: 101%;
-    //height: 101%;
-  	/*background-image: url(../../assets/img/Glasgow.png);*/
+    //height: 101%;*/
+  	background-image: url(../../assets/img/Glasgow.png);
   	background-attachment: fixed;
-  	//padding: 300px 0;
+  	/*//padding: 300px 0;*/
 }
 .btn.btn-outlined {
   color: black;
   height: 40px;
-  //line-height: 38px;
+  /*//line-height: 38px;*/
   border: 1px solid white;
   border-radius: 5px;
   font-weight: 700;
@@ -38,9 +38,9 @@ img.active {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-size: 15px;
-  //padding: 0 35px;
+  /*//padding: 0 35px;*/
   width: 20px;
-  //text-align: center;
+  /*//text-align: center;*/
 }
 .btn.btn-outlined:hover {
   background: #ffffff;
@@ -114,5 +114,16 @@ textarea {
     color: white !important;
 }
 .input-field {
+    text-align: center;
+}
+.rotor {
+    position: relative;
+}
+.rotor:before {
+    content: 'up' !important;
+    color: black !important;
+    position: absolute;
+    top: -40px;
+    left: 20px;
     text-align: center;
 }

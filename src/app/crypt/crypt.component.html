@@ -1,5 +1,5 @@
 <div class="fixed-action-btn">
-	<button (click)="edit()" data-target="modal1" class="btn-floating btn-large grey darken-4 btn-flat">
+	<button data-target="modal1" class="btn-floating btn-large grey darken-4 btn-flat">
 		<i class="large material-icons">mode_edit</i>
 	</button>
 	<ul>
@@ -25,7 +25,7 @@
 						<div class="row center-align">
 							<ul class="collapsible z-depth-1" data-collapsible="accordion" style="border-color: rgba(255,255,255,0.2) !important;">
 								<li>
-									<div class="collapsible-header transparent" style="border-color: rgba(255,255,255,0.2) !important;">
+									<div class="collapsible-header transparent" style="border-color: rgba(255,255,255,1) !important;">
 										<strong>Encrypt</strong>
 										<span class="switch right black-text">
 										    <label>
@@ -82,7 +82,7 @@
 													<div class="valign-wrapper">
 														<div class="col m5">
 															<div class="input-field col s12 black-text">
-																<textarea id="textarea1" class="materialize-textarea"></textarea>
+																<textarea id="textarea1" class="materialize-textarea" disabled></textarea>
 																<label for="textarea1">Plain Text</label>
 															</div>
 														</div>
@@ -91,7 +91,7 @@
 														</div>
 														<div class="col m5">
 															<div class="input-field col s12 black-text">
-																<textarea id="textarea2" class="materialize-textarea"></textarea>
+																<textarea id="textarea2" class="materialize-textarea" disabled></textarea>
 																<label for="textarea2">Encrypted</label>
 															</div>
 														</div>
@@ -103,22 +103,73 @@
 								</li>
 							</ul>
 						</div>
-						<div class="row">
-							<span class="text-flow">Want to decrypt?<a href="login">here.</a></span>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
 	<footer>
-		<div id="modal1" class="modal black white-text z-depth-5" style="border: 1px solid white;">
-			<div class="modal-content">
-				<h4>Modal Header</h4>
-				<p>A bunch of text</p>
+		<div id="modal1" class="modal modal-fixed-footer z-depth-5" style="border: 1px solid white;">
+			<div class="modal-content center-align">
+				<h4>Enigma Machine Params</h4>
+				<div class="card grey lighten-3 z-depth-2" style="padding-top: 10px !important;">
+					<div class="row center-align">
+						<div class="input-field orange lighten-2 col m6 offset-m3 s6 offset-s6">
+							<select multiple>
+      							<option value="" disabled selected>Choose your option</option>
+								<option value="1">ROTOR I</option>
+								<option value="2">ROTOR II</option>
+								<option value="3">ROTOR III</option>
+								<option value="4">ROTOR IV</option>
+								<option value="5">ROTOR V</option>
+							</select>
+							<label>Rotors used(choose 3)</label>
+						</div>
+					</div>
+					<hr />
+					<div class="row center-align">
+						<p>Rotors Positions</p>
+						<span class="rotor">
+							<input type="text" class="btn btn-outlined" value="a">
+						</span>
+						<input type="text" class="btn btn-outlined rotor" value="a">
+						<input type="text" class="btn btn-outlined rotor" value="a">
+					</div>
+					<hr/>
+					<div class="row center-align">
+						<p>Plugboard</p>
+						<input type="text" class="btn btn-outlined" placeholder="A">
+						<input type="text" class="btn btn-outlined" placeholder="B">
+						<input type="text" class="btn btn-outlined" placeholder="C">
+						<input type="text" class="btn btn-outlined" placeholder="D">
+						<input type="text" class="btn btn-outlined" placeholder="E">
+						<input type="text" class="btn btn-outlined" placeholder="F">
+						<input type="text" class="btn btn-outlined" placeholder="G">
+						<input type="text" class="btn btn-outlined" placeholder="H">
+						<input type="text" class="btn btn-outlined" placeholder="I">
+						<input type="text" class="btn btn-outlined" placeholder="J">
+						<input type="text" class="btn btn-outlined" placeholder="K">
+						<input type="text" class="btn btn-outlined" placeholder="L">
+						<input type="text" class="btn btn-outlined" placeholder="M">
+						<input type="text" class="btn btn-outlined" placeholder="N">
+						<input type="text" class="btn btn-outlined" placeholder="O">
+						<input type="text" class="btn btn-outlined" placeholder="P">
+						<input type="text" class="btn btn-outlined" placeholder="Q">
+						<input type="text" class="btn btn-outlined" placeholder="R">
+						<input type="text" class="btn btn-outlined" placeholder="S">
+						<input type="text" class="btn btn-outlined" placeholder="T">
+						<input type="text" class="btn btn-outlined" placeholder="U">
+						<input type="text" class="btn btn-outlined" placeholder="V">
+						<input type="text" class="btn btn-outlined" placeholder="W">
+						<input type="text" class="btn btn-outlined" placeholder="X">
+						<input type="text" class="btn btn-outlined" placeholder="Y">
+						<input type="text" class="btn btn-outlined" placeholder="Z">
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+				<button (click)="updateMachine()" class="modal-action waves-effect waves-green btn-flat">Update</button>
+				<button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
 			</div>
 		</div>
 	</footer>
