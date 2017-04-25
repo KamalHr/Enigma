@@ -19,25 +19,18 @@
 	<main>
 		<div class="row">
 			<div class="col s12 m8 offset-m2">
-				<div class="card transparent black-text z-depth-0 center-align">
+				<div class="card transparent white-text z-depth-0 center-align">
 					<div class="card-content">
 						<br/>
 						<div class="row center-align">
 							<ul class="collapsible z-depth-1" data-collapsible="accordion" style="border-color: rgba(255,255,255,0.2) !important;">
 								<li>
 									<div class="collapsible-header transparent" style="border-color: rgba(255,255,255,1) !important;">
-										<strong>Encrypt</strong>
-										<span class="switch right black-text">
-										    <label>
-										      	Encrypt
-										      	<input [(ngModel)]="isDecrypt" type="checkbox">
-										      	<span class="lever"></span> Decrypt
-										</label>
-										</span>
+										<strong>ENIGMA Machine</strong>
 									</div>
-									<div class="collapsible-body black-text" style="border-color: rgba(255,255,255,0.2) !important;">
+									<div class="collapsible-body white-text" style="border-color: rgba(255,255,255,0.2) !important;">
 										<div class="row">
-											<div class="keyboard black-text">
+											<div class="keyboard white-text">
 												<div class="row">
 													<input id="rotor1" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
 													<input id="rotor2" type="text" class="btn btn-outlined transparent" value="a" disabled="true">
@@ -110,66 +103,56 @@
 	</main>
 	<footer>
 		<div id="modal1" class="modal modal-fixed-footer z-depth-5" style="border: 1px solid white;">
-			<div class="modal-content center-align">
+			<div *ngIf="isLoading" class="modal-content center-align">
+				<div class="preloader-wrapper big active">
+					<div class="spinner-layer spinner-blue-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+						</div>
+						<div class="gap-patch">
+							<div class="circle"></div>
+						</div>
+						<div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div *ngIf="!isLoading" class="modal-content center-align">
 				<h4>Enigma Machine Params</h4>
+				<div *ngIf="error != ''" class="row">
+					<div class="card red black-text">
+						{{error}}
+					</div>
+				</div>
 				<div class="card grey lighten-3 z-depth-2" style="padding-top: 10px !important;">
 					<div class="row center-align">
-						<div class="input-field orange lighten-2 col m6 offset-m3 s6 offset-s6">
-							<select multiple>
-      							<option value="" disabled selected>Choose your option</option>
-								<option value="1">ROTOR I</option>
-								<option value="2">ROTOR II</option>
-								<option value="3">ROTOR III</option>
-								<option value="4">ROTOR IV</option>
-								<option value="5">ROTOR V</option>
-							</select>
-							<label>Rotors used(choose 3)</label>
+						<div class="black-text col m8 offset-m2 s8 offset-s2">
+							<ul>
+								<li style="display: inline-block !important; margin: 15px;" *ngFor="let rotor of rotors">
+									<input type="checkbox" [id]="rotor.name+'r'" [(ngModel)]="rotor.checked" />
+									<label class="black-text" [for]="rotor.name+'r'">{{rotor.name}}</label>
+								</li>
+							</ul>
 						</div>
 					</div>
 					<hr />
 					<div class="row center-align">
 						<p>Rotors Positions</p>
-						<span class="rotor">
-							<input type="text" class="btn btn-outlined" value="a">
-						</span>
-						<input type="text" class="btn btn-outlined rotor" value="a">
-						<input type="text" class="btn btn-outlined rotor" value="a">
+						<input type="text" class="btn btn-outlined" maxlength="1" name="rotorI" [(ngModel)]="settings.rotors[0].position">
+						<input type="text" class="btn btn-outlined" maxlength="1" name="rotorII" [(ngModel)]="settings.rotors[1].position">
+						<input type="text" class="btn btn-outlined" maxlength="1" name="rotorIII" [(ngModel)]="settings.rotors[2].position">
 					</div>
 					<hr/>
-					<div class="row center-align">
+					<div class="row center-align black-text">
 						<p>Plugboard</p>
-						<input type="text" class="btn btn-outlined" placeholder="A">
-						<input type="text" class="btn btn-outlined" placeholder="B">
-						<input type="text" class="btn btn-outlined" placeholder="C">
-						<input type="text" class="btn btn-outlined" placeholder="D">
-						<input type="text" class="btn btn-outlined" placeholder="E">
-						<input type="text" class="btn btn-outlined" placeholder="F">
-						<input type="text" class="btn btn-outlined" placeholder="G">
-						<input type="text" class="btn btn-outlined" placeholder="H">
-						<input type="text" class="btn btn-outlined" placeholder="I">
-						<input type="text" class="btn btn-outlined" placeholder="J">
-						<input type="text" class="btn btn-outlined" placeholder="K">
-						<input type="text" class="btn btn-outlined" placeholder="L">
-						<input type="text" class="btn btn-outlined" placeholder="M">
-						<input type="text" class="btn btn-outlined" placeholder="N">
-						<input type="text" class="btn btn-outlined" placeholder="O">
-						<input type="text" class="btn btn-outlined" placeholder="P">
-						<input type="text" class="btn btn-outlined" placeholder="Q">
-						<input type="text" class="btn btn-outlined" placeholder="R">
-						<input type="text" class="btn btn-outlined" placeholder="S">
-						<input type="text" class="btn btn-outlined" placeholder="T">
-						<input type="text" class="btn btn-outlined" placeholder="U">
-						<input type="text" class="btn btn-outlined" placeholder="V">
-						<input type="text" class="btn btn-outlined" placeholder="W">
-						<input type="text" class="btn btn-outlined" placeholder="X">
-						<input type="text" class="btn btn-outlined" placeholder="Y">
-						<input type="text" class="btn btn-outlined" placeholder="Z">
+						<input *ngFor="let alphabet of alphabets" maxlength="1" type="text" class="btn btn-outlined alphabet" [(ngModel)]="alphabet.lettre" [placeholder]="alphabet.case">
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button (click)="updateMachine()" class="modal-action waves-effect waves-green btn-flat">Update</button>
-				<button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
+				<button (click)="updateMachine()" class="modal-action waves-effect waves-green btn-flat" [disabled]="isLoading">Update</button>
+				<button class="modal-action modal-close waves-effect waves-green btn-flat" [disabled]="isLoading">Close</button>
 			</div>
 		</div>
 	</footer>

@@ -74,4 +74,7 @@ export class EncryptService {
 		};
 		return {positions: [this.settings.rotors[0].position,this.settings.rotors[1].position,this.settings.rotors[2].position]};
 	}
+	updateMachine = (settings) => {
+		this.settings = settings;
+	}
 }
