@@ -103,8 +103,8 @@
 	</main>
 	<footer>
 		<div id="modal1" class="modal modal-fixed-footer z-depth-5" style="border: 1px solid white;">
-			<div *ngIf="isLoading" class="modal-content center-align" style="position: relative;">
-				<div class="preloader-wrapper big active" style="position: absolute; top: 40%; left: 50%;">
+			<div *ngIf="isLoading" class="modal-content center-align">
+				<div class="preloader-wrapper big active">
 					<div class="spinner-layer spinner-blue-only">
 						<div class="circle-clipper left">
 							<div class="circle"></div>
@@ -122,9 +122,7 @@
 				<h4>Enigma Machine Params</h4>
 				<div *ngIf="error != ''" class="row">
 					<div class="card red black-text">
-						<br />
 						{{error}}
-						<br /><br />
 					</div>
 				</div>
 				<div class="card grey lighten-3 z-depth-2" style="padding-top: 10px !important;">
@@ -141,9 +139,9 @@
 					<hr />
 					<div class="row center-align">
 						<p>Rotors Positions</p>
-						<input type="text" class="btn btn-outlined" style="color: black;" maxlength="1" name="rotorI" [(ngModel)]="settings.rotors[0].position">
-						<input type="text" class="btn btn-outlined" style="color: black;" maxlength="1" name="rotorII" [(ngModel)]="settings.rotors[1].position">
-						<input type="text" class="btn btn-outlined" style="color: black;" maxlength="1" name="rotorIII" [(ngModel)]="settings.rotors[2].position">
+						<input type="text" class="btn btn-outlined" maxlength="1" name="rotorI" [(ngModel)]="settings.rotors[0].position">
+						<input type="text" class="btn btn-outlined" maxlength="1" name="rotorII" [(ngModel)]="settings.rotors[1].position">
+						<input type="text" class="btn btn-outlined" maxlength="1" name="rotorIII" [(ngModel)]="settings.rotors[2].position">
 					</div>
 					<hr/>
 					<div class="row center-align black-text">
